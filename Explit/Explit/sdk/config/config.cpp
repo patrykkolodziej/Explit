@@ -7,7 +7,7 @@ c_config::c_config(const std::string path)
 	directory_path = path;
 
 	if (!std::filesystem::exists(directory_path))
-		std::filesystem::create_directory(directory_path);
+		std::filesystem::create_directories(directory_path);
 
 	refresh();
 }
