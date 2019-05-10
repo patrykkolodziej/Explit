@@ -3,7 +3,7 @@ c_glow g_glow;
 
 void c_glow::start()
 {
-	static auto glow_object_manager = *(c_glow_manager**)(g_utils.find_signature("client_panorama.dll", "0F 11 05 ? ? ? ? 83 C8 01 C7 05 ? ? ? ? 00 00 00 00") + 3);
+	static auto glow_object_manager = *(c_glow_manager**)(g_utils.find_signature("client_panorama.dll", "0F 11 05 ? ? ? ? 83 C8 01") + 3);
 
 	for (int i = 0; i < glow_object_manager->size; i++)
 	{
