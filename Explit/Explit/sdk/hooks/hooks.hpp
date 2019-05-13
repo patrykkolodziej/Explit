@@ -11,9 +11,11 @@ public:
 	void un_hooks();
 	static void __fastcall paint_traverse(PVOID p_panels, int edx, unsigned int vgui_panel, bool force_repaint, bool allow_force);
 	static void __fastcall lock_cursor(i_surface* thisptr, void* edx);
+	static bool __fastcall create_move(i_client_mode*, void*, float, c_user_cmd*);
 	static int	__fastcall post_screen_effects(void *thisptr, void * _EDX, int a1);
 	static void __fastcall scene_end(void* thisptr, void* edx);
 private:
+	using create_move_fn = bool(__fastcall*)(i_client_mode*, void*, float, c_user_cmd*);
 	using paint_traverse_fn = void(__thiscall*)(void*, vgui::vpanel, bool, bool);
 	using post_screen_effects_fn = int(__fastcall*)(void*, void*, int);
 	using lock_cursor_fn = void(__fastcall*)(i_surface*, void*);

@@ -19,6 +19,7 @@ void c_hooks::get_hooks()
 	render_view_hook = std::make_unique<vmt>(g_interfaces.p_render_view);
 	panel_hook->hook(41, paint_traverse);
 	client_mode_hook->hook(44, post_screen_effects);
+	//client_mode_hook->hook(24, create_move);
 	render_view_hook->hook(9, scene_end);
 	//surface_hook->hook(67, lockcursor);
 	zgui::functions.draw_line = line;
@@ -33,6 +34,7 @@ void c_hooks::un_hooks()
 {
 	panel_hook->unhook(41);
 	client_mode_hook->unhook(44);
+	//client_mode_hook->unhook(24);
 	render_view_hook->unhook(9);
 	//surface_hook->unhook(67);
 }
@@ -101,4 +103,15 @@ void __fastcall  c_hooks::lock_cursor(i_surface* thisptr, void* edx)
 		ohook(thisptr,edx);
 
 	g_interfaces.p_surface->unlock_cursor();
+}
+
+bool __fastcall c_hooks::create_move(i_client_mode* thisptr, void* edx, float sample_frametime, c_user_cmd* p_cmd)
+{
+	static auto ohook = g_hooks.client_mode_hook->getorginal<create_move_fn>(24);
+
+	if (!p_cmd->command_number || !g_interfaces.p_engine->is_in_game() || !g_interfaces.g_local_player || !g_interfaces.g_local_player->is_valid())
+		return ohook(thisptr, edx, sample_frametime, p_cmd);
+
+
+
 }

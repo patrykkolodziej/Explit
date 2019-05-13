@@ -38,14 +38,14 @@ public:
 				bool nades = false;
 				bool chickens = false;
 				struct {
-					float team_invisible[3] = { 0,0,255 };
-					float team_visible[3] = { 0,255,0 };
-					float enemy_invisible[3] = { 255,255,0 };
-					float enemy_visible[3] = { 255,0,0 };
-					float weapons[3] = { 255,0,0 } ;
-					float chickens[3] =  { 255,0,0 };
-					float vulnerability[3] = {255,255,255};
-					float local[4] = { 54, 251, 43 , 255 };
+					int team_invisible[4] = { 0,0,255 ,255 };
+					int team_visible[4] = { 0,255,0 ,255 };
+					int enemy_invisible[4] = { 255,255,0 ,255 };
+					int enemy_visible[4] = { 255,0,0 ,255 };
+					int weapons[4] = { 255,0,0 ,255 } ;
+					int chickens[4] =  { 255,0,0,255 };
+					int vulnerability[4] = {255,255,255,255 };
+					int local[4] = { 54, 251, 43 , 255 };
 				}colors;
 			}esp;
 			struct {
@@ -59,13 +59,13 @@ public:
 				bool arms = false;
 				bool weapon = false;
 				struct {
-					float team_invisible[3] = { 0,0,255 };
-					float team_visible[3] = { 0,255,0 };
-					float enemy_invisible[3] = { 255,255,0 };
-					float enemy_visible[3] = { 255,0,0 };
-					float arms[3] = { 255,0,0 };
-					float weapon[3] = { 255,0,0 };
-					float local[3] = { 32,164,199 };
+					float team_invisible[4] = { 0,0,255,255 };
+					float team_visible[4] = { 0,255,0,255 };
+					float enemy_invisible[4] = { 255,255,0,255 };
+					float enemy_visible[4] = { 255,0,0,255 };
+					float arms[4] = { 255,0,0,255 };
+					float weapon[4] = { 255,0,0,255 };
+					float local[4] = { 32,164,199,255 };
 				}colors;
 			}chams;
 			struct {
@@ -79,14 +79,14 @@ public:
 				bool vulnerability = false;
 				int style = 0;
 				struct {
-					float team_invisible[3] = { 0,0,255 };
-					float team_visible[3] = { 0,255,0 };
-					float enemy_invisible[3] = { 255,255,0 };
-					float enemy_visible[3] = { 255,0,0 };
-					float weapons[3] = { 255,0,0 };
-					float chickens[3] = { 255,0,0 };
-					float local[3] = { 32,164,199 };
-					float vulnerability[3] = { 255,255,255 };
+					int team_invisible[4] = { 0,0,255,255 };
+					int team_visible[4] = { 0,255,0,255 };
+					int enemy_invisible[4] = { 255,255,0,255 };
+					int enemy_visible[4] = { 255,0,0,255 };
+					int weapons[4] = { 255,0,0,255 };
+					int chickens[4] = { 255,0,0,255 };
+					int local[4] = { 32,164,199 ,255 };
+					int vulnerability[4] = { 255,255,255 ,255 };
 				}colors;
 			}glow;
 			struct {

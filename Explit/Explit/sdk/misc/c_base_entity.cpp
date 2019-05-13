@@ -93,3 +93,12 @@ bool c_base_entity::is_c4()
 {
 	return get_client_class()->class_id == class_id::cplantedc4 || get_client_class()->class_id == class_id::cc4;
 }
+int32_t c_base_entity::get_move_type()
+{
+	return *reinterpret_cast<int32_t*>((uintptr_t)this + 0x258);
+}
+int c_base_entity::m_fflags()
+{
+	static auto offset = c.netvar->get_offset("DT_BasePlayer", "m_fFlags");
+	return *reinterpret_cast<int*>((uintptr_t)this + offset);
+}

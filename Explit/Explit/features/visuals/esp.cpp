@@ -50,7 +50,7 @@ void c_esp::draw_players(c_base_entity* p_player, const RECT box)
 				g_draw.rect(box.left - 1, box.top - 1, box.right - box.left + 2, box.bottom - box.top + 2, color(1, 1, 1));
 				g_draw.rect(box.left + 1, box.top + 1, box.right - box.left - 2, box.bottom - box.top - 2, color(1, 1, 1));
 			}
-			g_draw.rect(box.left, box.top, box.right - box.left, box.bottom - box.top, p_player->m_iteamnum() == g_interfaces.g_local_player->m_iteamnum() ? color(g_config.settings.visuals.esp.colors.team_visible[0], g_config.settings.visuals.esp.colors.team_visible[1], g_config.settings.visuals.esp.colors.team_visible[2], 255.f) : color(g_config.settings.visuals.esp.colors.enemy_visible[0], g_config.settings.visuals.esp.colors.enemy_visible[1], g_config.settings.visuals.esp.colors.enemy_visible[2],255.f));
+			g_draw.rect(box.left, box.top, box.right - box.left, box.bottom - box.top, p_player->m_iteamnum() == g_interfaces.g_local_player->m_iteamnum() ? color(g_config.settings.visuals.esp.colors.team_visible[0], g_config.settings.visuals.esp.colors.team_visible[1], g_config.settings.visuals.esp.colors.team_visible[2], g_config.settings.visuals.esp.colors.team_visible[3]) : color(g_config.settings.visuals.esp.colors.enemy_visible[0], g_config.settings.visuals.esp.colors.enemy_visible[1], g_config.settings.visuals.esp.colors.enemy_visible[2], g_config.settings.visuals.esp.colors.enemy_visible[3]));
 			break;
 		}
 		case 1:

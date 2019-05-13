@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="features\misc\bunnyhop.cpp" />
     <ClCompile Include="features\visuals\chams.cpp" />
     <ClCompile Include="features\visuals\dlight.cpp" />
     <ClCompile Include="features\visuals\esp.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="zgui\zgui.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="features\misc\bunnyhop.hpp" />
     <ClInclude Include="features\visuals\chams.hpp" />
     <ClInclude Include="features\visuals\dlight.hpp" />
     <ClInclude Include="features\visuals\esp.hpp" />
@@ -210,6 +212,8 @@
     <ClInclude Include="sdk\misc\valve\client_class.hpp" />
     <ClInclude Include="sdk\misc\valve\c_base_handle.hpp" />
     <ClInclude Include="sdk\misc\valve\c_glow_manager.hpp" />
+    <ClInclude Include="sdk\misc\valve\c_user_cmd.hpp" />
+    <ClInclude Include="sdk\misc\valve\entity_flags.hpp" />
     <ClInclude Include="sdk\misc\valve\item_definition_index.hpp" />
     <ClInclude Include="sdk\misc\valve\i_app_system.hpp" />
     <ClInclude Include="sdk\misc\valve\i_client_entity.hpp" />
@@ -222,6 +226,7 @@
     <ClInclude Include="sdk\misc\valve\i_handle_entity.hpp" />
     <ClInclude Include="sdk\misc\valve\i_material.hpp" />
     <ClInclude Include="sdk\misc\valve\life_state.hpp" />
+    <ClInclude Include="sdk\misc\valve\move_type.hpp" />
     <ClInclude Include="sdk\misc\valve\recv.hpp" />
     <ClInclude Include="sdk\misc\valve\studio.hpp" />
     <ClInclude Include="sdk\netvarmanager\fnv.hpp" />

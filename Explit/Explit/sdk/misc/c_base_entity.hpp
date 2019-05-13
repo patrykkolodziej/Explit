@@ -25,6 +25,8 @@ public:
 	bool is_weapon();
 	bool is_nade();
 	bool is_chicken();
+	int m_fflags();
 	bool is_c4();
 	Vector m_vecorigin();
+	int32_t get_move_type();
 };
