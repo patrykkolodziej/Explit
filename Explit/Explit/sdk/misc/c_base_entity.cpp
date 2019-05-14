@@ -102,3 +102,57 @@ int c_base_entity::m_fflags()
 	static auto offset = c.netvar->get_offset("DT_BasePlayer", "m_fFlags");
 	return *reinterpret_cast<int*>((uintptr_t)this + offset);
 }
+Vector c_base_entity::m_vecviewoffset()
+{
+	static auto offset = c.netvar->get_offset("DT_CSPlayer", "m_vecViewOffset[0]");
+	return *reinterpret_cast<Vector*>((uintptr_t)this + offset);
+}
+Vector c_base_entity::get_bone_position(const int bone)
+{
+	matrix3x4_t bone_matrix[MAXSTUDIOBONES];
+
+	if (setup_bones(bone_matrix, MAXSTUDIOBONES, BONE_USED_BY_ANYTHING, 0.0f)) {
+		return Vector(bone_matrix[bone][0][3], bone_matrix[bone][1][3], bone_matrix[bone][2][3]);
+	}
+
+	return Vector{};
+}
+Vector c_base_entity::get_hitbox_position(const int hitbox)
+{
+	matrix3x4_t bone_matrix[MAXSTUDIOBONES];
+
+	if (setup_bones(bone_matrix, MAXSTUDIOBONES, BONE_USED_BY_HITBOX, 0.0f)) 
+	{
+		if (const auto studio_model = g_interfaces.p_model_info_client->getstudiomodel(get_model()); studio_model)
+		{
+			if (const auto p_hitbox = studio_model->phitboxset(0)->phitbox(hitbox); p_hitbox)
+			{
+				Vector min, max;
+
+				g_math.vector_transform(p_hitbox->bbmin, bone_matrix[p_hitbox->bone], min);
+				g_math.vector_transform(p_hitbox->bbmax, bone_matrix[p_hitbox->bone], max);
+
+				return (min + max) / 2.0f;
+			}
+		}
+	}
+	return Vector{};
+}
+bool c_base_entity::is_visible(c_base_entity* p_player)
+{
+	c_game_trace game_trace;
+	ray_t ray;
+	c_trace_filter filter;
+	filter.pskip = this;
+	const auto start_pos = m_vecorigin() + m_vecviewoffset();
+
+	for (int i = 0; i < hitbox_max; i++)
+	{
+		const auto trace_pos = p_player->get_hitbox_position(i);
+
+		ray.init(start_pos, trace_pos);
+		g_interfaces.p_engine_trace->trace_ray(ray, mask_shot | contents_grate, &filter, &game_trace);
+
+		return game_trace.hit_entity == p_player || game_trace.fraction > 0.97f;
+	}
+}

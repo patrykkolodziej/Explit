@@ -79,6 +79,7 @@
 #include "../features/visuals/glow.hpp"
 #include "../features/visuals/dlight.hpp"
 #include "../features/visuals//chams.hpp"
+#include "../features/misc/bunnyhop.hpp"
 
 #include "hooks/hooks.hpp"
 

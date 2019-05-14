@@ -7,7 +7,7 @@ void c_menu::draw()
 
 	if (zgui::begin_window("Explit for Counter-Strike: Global Offensive", { 500, 350 }, g_draw.menu, zgui::zgui_window_flags_none))
 	{
-		if (zgui::tab_button("Aimbot", { 165,30 }, aimbot))
+		if (zgui::tab_button("Legitbot", { 165,30 }, aimbot))
 		{
 			aimbot = true;
 			visuals = false;
@@ -75,6 +75,7 @@ void c_menu::draw_misc()
 {
 	zgui::begin_groupbox("Misc");
 	{
+		zgui::checkbox("BunnyHop", g_config.settings.misc.movement.bunnyhop);
 		if (zgui::button("Unhook"))
 			g_sdk.unhook = true;
 	}
@@ -180,5 +181,11 @@ void c_menu::draw_visuals()
 
 void c_menu::draw_aimbot()
 {
-
+	zgui::begin_groupbox("Main");
+	{
+		zgui::checkbox("Triggerbot", g_config.settings.triggerbot.enable);
+		zgui::key_bind("Triggerbot Key 1", g_config.settings.triggerbot.key_1);
+		zgui::key_bind("Triggerbot Key 2", g_config.settings.triggerbot.key_2);
+	}
+	zgui::end_groupbox();
 }

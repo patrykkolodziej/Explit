@@ -25,8 +25,12 @@ public:
 	bool is_weapon();
 	bool is_nade();
 	bool is_chicken();
+	Vector m_vecviewoffset();
 	int m_fflags();
 	bool is_c4();
 	Vector m_vecorigin();
+	Vector get_bone_position(const int bone);
+	Vector get_hitbox_position(const int hitbox);
+	bool is_visible(c_base_entity* p_player);
 	int32_t get_move_type();
 };

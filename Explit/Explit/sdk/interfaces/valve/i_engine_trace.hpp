@@ -420,11 +420,11 @@ public:
 class c_game_trace : public c_base_trace
 {
 public:
-	bool didhitworld() const;
-	bool didhitnonworldentity() const;
-	int getentityindex() const;
-	bool didhit() const;
-	bool isvisible() const;
+	bool did_hit_world() const;
+	bool did_hit_non_world_entity() const;
+	int get_entity_index() const;
+	bool did_hit() const;
+	bool is_visible() const;
 
 public:
 
@@ -459,13 +459,12 @@ private:
 		startsolid = other.startsolid;
 	}
 };
-
-inline bool c_game_trace::didhit() const
+inline bool c_game_trace::did_hit() const
 {
 	return fraction < 1 || allsolid || startsolid;
 }
 
-inline bool c_game_trace::isvisible() const
+inline bool c_game_trace::is_visible() const
 {
 	return fraction > 0.97f;
 }

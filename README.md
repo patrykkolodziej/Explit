@@ -3,7 +3,7 @@ Explit is an internal multihack for Counter-Strike: Global Offensive. Currently 
 
 ## Image
 
-[![Image](https://i.imgur.com/EFdx2O5.png)](https://i.imgur.com/EFdx2O5.png)
+[![Image](https://i.imgur.com/gE9dzV0.png)](https://i.imgur.com/gE9dzV0.png)
 
 ## Features
 

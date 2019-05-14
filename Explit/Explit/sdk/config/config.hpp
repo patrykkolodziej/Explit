@@ -8,13 +8,16 @@ public:
 	void load(const std::string name);
 	void save(const std::string name);
 	void refresh();
+
 	struct {
 		bool unhook = false;
 		std::vector<std::string> config_list;
 		std::string config_name;
 		int config_id = 0;
-		struct {
-			struct {
+		struct 
+		{
+			struct 
+			{
 				bool esp = true;
 				bool box = true;
 				int box_type = 1;
@@ -46,9 +49,11 @@ public:
 					int chickens[4] =  { 255,0,0,255 };
 					int vulnerability[4] = {255,255,255,255 };
 					int local[4] = { 54, 251, 43 , 255 };
+					int skeleton[4] = { 54, 251, 43 , 255 };
 				}colors;
 			}esp;
-			struct {
+			struct 
+			{
 				bool chams = false;
 				bool local = false;
 				bool enemy = false;
@@ -58,7 +63,8 @@ public:
 				bool visible = false;
 				bool arms = false;
 				bool weapon = false;
-				struct {
+				struct 
+				{
 					float team_invisible[4] = { 0,0,255,255 };
 					float team_visible[4] = { 0,255,0,255 };
 					float enemy_invisible[4] = { 255,255,0,255 };
@@ -68,7 +74,8 @@ public:
 					float local[4] = { 32,164,199,255 };
 				}colors;
 			}chams;
-			struct {
+			struct 
+			{
 				bool glow = false;
 				bool local = false;
 				bool chickens = false;
@@ -78,7 +85,8 @@ public:
 				bool enemy = false;
 				bool vulnerability = false;
 				int style = 0;
-				struct {
+				struct 
+				{
 					int team_invisible[4] = { 0,0,255,255 };
 					int team_visible[4] = { 0,255,0,255 };
 					int enemy_invisible[4] = { 255,255,0,255 };
@@ -89,19 +97,38 @@ public:
 					int vulnerability[4] = { 255,255,255 ,255 };
 				}colors;
 			}glow;
-			struct {
+			struct 
+			{
 				bool enable = false;
 				bool local = false;
 				bool enemy = false;
 				bool team = false;
 				float radius = 50.f;
+				struct 
+				{
+					int local[3] = { 32,164,199 };
+					int team[3] = { 32,164,199 };
+					int enemy[3] = { 32,164,199 };
+				}colors;
 			}dlights;
-			struct {
+			struct 
+			{
 				bool watermark = true;
 			}others;
 		}visuals;
-		struct {
+		struct 
+		{
+			struct 
+			{
+				bool bunnyhop = false;
+			}movement;
 		}misc;
+		struct 
+		{
+			bool enable = false;
+			int key_1 = 4;
+			int key_2 = 18;
+		}triggerbot;
 	} settings;
 private:
 	std::string directory_path;
