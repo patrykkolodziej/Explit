@@ -15,10 +15,11 @@ void c_dlight::start()
 				continue;
 
 			if (g_config.settings.visuals.dlights.enemy && entity->m_iteamnum() != g_interfaces.g_local_player->m_iteamnum() && entity->is_valid())
-				dlight(entity, { 255,0,0,10 });
+				dlight(entity, { static_cast<byte>(g_config.settings.visuals.dlights.colors.enemy[0]), static_cast<byte>(g_config.settings.visuals.dlights.colors.enemy[1]),static_cast<byte>(g_config.settings.visuals.dlights.colors.enemy[2]), 10 });
 			if (g_config.settings.visuals.dlights.team && entity->m_iteamnum() == g_interfaces.g_local_player->m_iteamnum() && entity->is_valid())
-				dlight(entity, { 0,255,0,10 });
-
+				dlight(entity, { static_cast<byte>(g_config.settings.visuals.dlights.colors.team[0]), static_cast<byte>(g_config.settings.visuals.dlights.colors.team[1]), static_cast<byte>(g_config.settings.visuals.dlights.colors.team[2]), 10 });
+			if(entity == g_interfaces.g_local_player)
+				dlight(entity, { static_cast<byte>(g_config.settings.visuals.dlights.colors.local[0]), static_cast<byte>(g_config.settings.visuals.dlights.colors.local[1]), static_cast<byte>(g_config.settings.visuals.dlights.colors.local[2]), 10 });
 		}
 	}
 }

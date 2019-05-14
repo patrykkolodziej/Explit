@@ -44,15 +44,15 @@ typedef float radian_euler[3];
 
 #define Assert( _exp ) ((void)0)
 
-#define HITGROUP_GENERIC 0
-#define HITGROUP_HEAD 1
-#define HITGROUP_CHEST 2
-#define HITGROUP_STOMACH 3
-#define HITGROUP_LEFTARM 4    
-#define HITGROUP_RIGHTARM 5
-#define HITGROUP_LEFTLEG 6
-#define HITGROUP_RIGHTLEG 7
-#define HITGROUP_GEAR 10
+constexpr auto hitgroup_generic = 0;
+constexpr auto hitgroup_head = 1;
+constexpr auto hitgroup_chest = 2;
+constexpr auto hitgroup_stomach = 3;
+constexpr auto hitgroup_leftarm = 4;
+constexpr auto hitgroup_rightarm = 5;
+constexpr auto hitgroup_leftleg = 6;
+constexpr auto hitgroup_rightleg = 7;
+constexpr auto hitgroup_gear = 10;
 
 enum mod_type_t
 {

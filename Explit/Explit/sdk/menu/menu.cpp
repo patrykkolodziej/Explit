@@ -186,6 +186,7 @@ void c_menu::draw_aimbot()
 		zgui::checkbox("Triggerbot", g_config.settings.triggerbot.enable);
 		zgui::key_bind("Triggerbot Key 1", g_config.settings.triggerbot.key_1);
 		zgui::key_bind("Triggerbot Key 2", g_config.settings.triggerbot.key_2);
+		zgui::listbox("Hitboxes", std::vector< zgui::multi_select_item >{ { "Head", &g_config.settings.triggerbot.hit_head }, { "Body", &g_config.settings.triggerbot.hit_body }, { "Arms", &g_config.settings.triggerbot.hit_arms }, { "Legs", &g_config.settings.triggerbot.hit_legs }});
 	}
 	zgui::end_groupbox();
 }

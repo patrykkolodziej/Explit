@@ -7,9 +7,8 @@ void c_chams::scene_end_start()
 	{
 		static auto chams_material = g_interfaces.p_material_system->findmaterial("debug/debugdrawflat", TEXTURE_GROUP_MODEL);
 		
-		chams_material->setmaterialvarflag(material_var_ignorez, true);
+		chams_material->setmaterialvarflag(material_var_ignorez, !g_config.settings.visuals.chams.visible);
 		chams_material->alphamodulate(1.f);
-		chams_material->colormodulate(47 / 255.f, 190 / 255.f ,244 / 255.f);
 		
 		for (int i = 1; i <= g_interfaces.p_engine->get_max_clients(); i++) {
 			const auto p_entity = reinterpret_cast<c_base_entity*>(g_interfaces.p_entity_list->get_client_entity((i)));
@@ -20,11 +19,29 @@ void c_chams::scene_end_start()
 			if (p_entity == g_interfaces.g_local_player && !g_config.settings.visuals.chams.local)
 				continue;
 
-			g_interfaces.p_render_view->setcolormodulation(47 / 255.f, 190 / 255.f, 244 / 255.f);
-			g_interfaces.p_model_render->forcedmaterialoverride(chams_material);
-			p_entity->draw_model(0x1, 255);
-			g_interfaces.p_model_render->forcedmaterialoverride(nullptr);
+			if (g_config.settings.visuals.chams.enemy && p_entity->m_iteamnum() != g_interfaces.g_local_player->m_iteamnum() && p_entity->is_valid())
+			{
+				chams_material->colormodulate(g_config.settings.visuals.chams.colors.enemy_visible[0] / 255.f, g_config.settings.visuals.chams.colors.enemy_visible[1] / 255.f, g_config.settings.visuals.chams.colors.enemy_visible[2] / 255.f);
+				g_interfaces.p_render_view->setcolormodulation(g_config.settings.visuals.chams.colors.enemy_visible[0] / 255.f, g_config.settings.visuals.chams.colors.enemy_visible[1] / 255.f, g_config.settings.visuals.chams.colors.enemy_visible[2] / 255.f);
+				g_interfaces.p_model_render->forcedmaterialoverride(chams_material);
+				p_entity->draw_model(0x1, 255);
+			}
+			if (g_config.settings.visuals.chams.team && p_entity->m_iteamnum() == g_interfaces.g_local_player->m_iteamnum() && p_entity->is_valid())
+			{
+				chams_material->colormodulate(g_config.settings.visuals.chams.colors.team_visible[0] / 255.f, g_config.settings.visuals.chams.colors.team_visible[1] / 255.f, g_config.settings.visuals.chams.colors.team_visible[2] / 255.f);
+				g_interfaces.p_render_view->setcolormodulation(g_config.settings.visuals.chams.colors.team_visible[0] / 255.f, g_config.settings.visuals.chams.colors.team_visible[1] / 255.f, g_config.settings.visuals.chams.colors.team_visible[2] / 255.f);
+				g_interfaces.p_model_render->forcedmaterialoverride(chams_material);
+				p_entity->draw_model(0x1, 255);
+			}
+			if (p_entity == g_interfaces.g_local_player)
+			{
+				chams_material->colormodulate(g_config.settings.visuals.chams.colors.local[0] / 255.f, g_config.settings.visuals.chams.colors.local[1] / 255.f, g_config.settings.visuals.chams.colors.local[2] / 255.f);
+				g_interfaces.p_render_view->setcolormodulation(g_config.settings.visuals.chams.colors.local[0] / 255.f, g_config.settings.visuals.chams.colors.local[1] / 255.f, g_config.settings.visuals.chams.colors.local[2] / 255.f);
+				g_interfaces.p_model_render->forcedmaterialoverride(chams_material);
+				p_entity->draw_model(0x1, 255);
+			}
 
+			g_interfaces.p_model_render->forcedmaterialoverride(nullptr);
 		}
 	}
 }

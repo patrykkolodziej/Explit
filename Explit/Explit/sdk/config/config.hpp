@@ -68,7 +68,7 @@ public:
 					float team_invisible[4] = { 0,0,255,255 };
 					float team_visible[4] = { 0,255,0,255 };
 					float enemy_invisible[4] = { 255,255,0,255 };
-					float enemy_visible[4] = { 255,0,0,255 };
+					float enemy_visible[4] = { 255,72,132,255 };
 					float arms[4] = { 255,0,0,255 };
 					float weapon[4] = { 255,0,0,255 };
 					float local[4] = { 32,164,199,255 };
@@ -87,14 +87,14 @@ public:
 				int style = 0;
 				struct 
 				{
-					int team_invisible[4] = { 0,0,255,255 };
-					int team_visible[4] = { 0,255,0,255 };
-					int enemy_invisible[4] = { 255,255,0,255 };
-					int enemy_visible[4] = { 255,0,0,255 };
-					int weapons[4] = { 255,0,0,255 };
-					int chickens[4] = { 255,0,0,255 };
-					int local[4] = { 32,164,199 ,255 };
-					int vulnerability[4] = { 255,255,255 ,255 };
+					int team_invisible[4] = { 0,0,255,179 };
+					int team_visible[4] = { 248,238,79,179 };
+					int enemy_invisible[4] = { 255,255,0,179 };
+					int enemy_visible[4] = { 91,210,236,179 };
+					int weapons[4] = { 255,0,0,179 };
+					int chickens[4] = { 255,0,0,179 };
+					int local[4] = { 32,164,199 ,179 };
+					int vulnerability[4] = { 255,255,255 ,179 };
 				}colors;
 			}glow;
 			struct 
@@ -128,6 +128,10 @@ public:
 			bool enable = false;
 			int key_1 = 4;
 			int key_2 = 18;
+			bool hit_head = false;
+			bool hit_body = false;
+			bool hit_arms = false;
+			bool hit_legs = false;
 		}triggerbot;
 	} settings;
 private:
