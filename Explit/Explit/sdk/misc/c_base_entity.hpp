@@ -27,8 +27,13 @@ public:
 	bool is_chicken();
 	Vector m_vecviewoffset();
 	int m_fflags();
+	int m_ntickbase();
+	int m_ishotsfired();
+	float m_flflashduration();
+	bool m_bisscoped();
 	bool is_c4();
 	Vector m_vecorigin();
+	Vector get_eye_position();
 	Vector get_bone_position(const int bone);
 	Vector get_hitbox_position(const int hitbox);
 	bool is_visible(c_base_entity* p_player);

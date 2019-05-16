@@ -110,6 +110,7 @@ void c_config::save(const std::string name)
 	save["Explit - Config"]["Visuals"]["Glow"]["Team"] = settings.visuals.glow.team;
 	save["Explit - Config"]["Visuals"]["Glow"]["Visible"] = settings.visuals.glow.visible;
 	save["Explit - Config"]["Visuals"]["Glow"]["Dropped Weapons"] = settings.visuals.glow.weapons;
+	save["Explit - Config"]["Visuals"]["Glow"]["Vulnerability"] = settings.visuals.glow.vulnerability;
 
 	save["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Team Invisible"][0] = settings.visuals.glow.colors.team_invisible[0];
 	save["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Team Invisible"][1] = settings.visuals.glow.colors.team_invisible[1];
@@ -150,7 +151,42 @@ void c_config::save(const std::string name)
 	save["Explit - Config"]["Visuals"]["DLights"]["Team"] = settings.visuals.dlights.team;
 	save["Explit - Config"]["Visuals"]["DLights"]["Radius"] = settings.visuals.dlights.radius;
 
+	save["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Local"][0] = settings.visuals.dlights.colors.local[0];
+	save["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Local"][1] = settings.visuals.dlights.colors.local[1];
+	save["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Local"][2] = settings.visuals.dlights.colors.local[2];
+	save["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Team"][0] = settings.visuals.dlights.colors.team[0];
+	save["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Team"][1] = settings.visuals.dlights.colors.team[1];
+	save["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Team"][2] = settings.visuals.dlights.colors.team[2];
+	save["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Enemy"][0] = settings.visuals.dlights.colors.enemy[0];
+	save["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Enemy"][1] = settings.visuals.dlights.colors.enemy[1];
+	save["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Enemy"][2] = settings.visuals.dlights.colors.enemy[2];
+
+
 	save["Explit - Config"]["Visuals"]["Others"]["Watermark"] = settings.visuals.others.watermark;
+
+	save["Explit - Config"]["Misc"]["Movement"]["Bunnyhop"] = settings.misc.movement.bunnyhop;
+
+	for (int i = 1; i <= 64; i++)
+	{
+		const auto weapon_name = g_utils.weapon_config_name(i);
+
+		if (weapon_name == "unknown")
+			continue;
+
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Enable"] = settings.legitbot.triggerbot[i].enable;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Key 1"] = settings.legitbot.triggerbot[i].key_1;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Key 2"] = settings.legitbot.triggerbot[i].key_2;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Flash Check"] = settings.legitbot.triggerbot[i].flash;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Smoke Check"] = settings.legitbot.triggerbot[i].smoke;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Jump Check"] = settings.legitbot.triggerbot[i].jump;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Scope Check"] = settings.legitbot.triggerbot[i].scope;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Sleep Before Shot"] = settings.legitbot.triggerbot[i].sleep_before;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Sleep Between Shots"] = settings.legitbot.triggerbot[i].sleep_between;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Hitbox Head"] = settings.legitbot.triggerbot[i].hit_head;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Hitbox Body"] = settings.legitbot.triggerbot[i].hit_body;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Hitbox Arms"] = settings.legitbot.triggerbot[i].hit_arms;
+		save["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Hitbox Legs"] = settings.legitbot.triggerbot[i].hit_legs;
+	}
 
 	out << save;
 
@@ -199,6 +235,127 @@ void c_config::load(const std::string name)
 	settings.visuals.esp.vulnerability = load["Explit - Config"]["Visuals"]["Esp"]["Vulnerability"].asBool();
 	settings.visuals.esp.team = load["Explit - Config"]["Visuals"]["Esp"]["Team"].asBool();
 
+	settings.visuals.esp.colors.team_invisible[0] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Team Invisible"][0].asInt();
+	settings.visuals.esp.colors.team_invisible[1] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Team Invisible"][1].asInt();
+	settings.visuals.esp.colors.team_invisible[2] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Team Invisible"][2].asInt();
+	settings.visuals.esp.colors.team_invisible[3] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Team Invisible"][3].asInt();
+	settings.visuals.esp.colors.team_visible[0] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Team Visible"][0].asInt();
+	settings.visuals.esp.colors.team_visible[1] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Team Visible"][1].asInt();
+	settings.visuals.esp.colors.team_visible[2] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Team Visible"][2].asInt();
+	settings.visuals.esp.colors.team_visible[3] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Team Visible"][3].asInt();
+	settings.visuals.esp.colors.enemy_invisible[0] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Enemy Invisible"][0].asInt();
+	settings.visuals.esp.colors.enemy_invisible[1] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Enemy Invisible"][1].asInt();
+	settings.visuals.esp.colors.enemy_invisible[2] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Enemy Invisible"][2].asInt();
+	settings.visuals.esp.colors.enemy_invisible[3] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Enemy Invisible"][3].asInt();
+	settings.visuals.esp.colors.enemy_visible[0] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Enemy Visible"][0].asInt();
+	settings.visuals.esp.colors.enemy_visible[1] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Enemy Visible"][1].asInt();
+	settings.visuals.esp.colors.enemy_visible[2] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Enemy Visible"][2].asInt();
+	settings.visuals.esp.colors.enemy_visible[3] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Enemy Visible"][3].asInt();
+	settings.visuals.esp.colors.chickens[0] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Chickens"][0].asInt();
+	settings.visuals.esp.colors.chickens[1] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Chickens"][1].asInt();
+	settings.visuals.esp.colors.chickens[2] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Chickens"][2].asInt();
+	settings.visuals.esp.colors.chickens[3] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Chickens"][3].asInt();
+	settings.visuals.esp.colors.weapons[0] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Dropped Weapons"][0].asInt();
+	settings.visuals.esp.colors.weapons[1] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Dropped Weapons"][1].asInt();
+	settings.visuals.esp.colors.weapons[2] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Dropped Weapons"][2].asInt();
+	settings.visuals.esp.colors.weapons[3] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Dropped Weapons"][3].asInt();
+	settings.visuals.esp.colors.vulnerability[0] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Vulnerability"][0].asInt();
+	settings.visuals.esp.colors.vulnerability[1] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Vulnerability"][1].asInt();
+	settings.visuals.esp.colors.vulnerability[2] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Vulnerability"][2].asInt();
+	settings.visuals.esp.colors.vulnerability[3] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Vulnerability"][3].asInt();
+	settings.visuals.esp.colors.local[0] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Local"][0].asInt();
+	settings.visuals.esp.colors.local[1] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Local"][1].asInt();
+	settings.visuals.esp.colors.local[2] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Local"][2].asInt();
+	settings.visuals.esp.colors.local[3] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Local"][3].asInt();
+	settings.visuals.esp.colors.skeleton[0] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Skeleton"][0].asInt();
+	settings.visuals.esp.colors.skeleton[1] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Skeleton"][1].asInt();
+	settings.visuals.esp.colors.skeleton[2] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Skeleton"][2].asInt();
+	settings.visuals.esp.colors.skeleton[3] = load["Explit - Config"]["Visuals"]["Esp"]["Colors"]["Skeleton"][3].asInt();
+
+	settings.visuals.glow.glow = load["Explit - Config"]["Visuals"]["Glow"]["Enable"].asBool();
+	settings.visuals.glow.chickens= load["Explit - Config"]["Visuals"]["Glow"]["Chickens"].asBool();
+	settings.visuals.glow.enemy= load["Explit - Config"]["Visuals"]["Glow"]["Enemies"].asBool();
+	settings.visuals.glow.local= load["Explit - Config"]["Visuals"]["Glow"]["Local"].asBool();
+	settings.visuals.glow.style = load["Explit - Config"]["Visuals"]["Glow"]["Style"].asInt();
+	settings.visuals.glow.team =load["Explit - Config"]["Visuals"]["Glow"]["Team"].asBool();
+	settings.visuals.glow.visible= load["Explit - Config"]["Visuals"]["Glow"]["Visible"].asBool();
+	settings.visuals.glow.weapons=load["Explit - Config"]["Visuals"]["Glow"]["Dropped Weapons"].asBool();
+	settings.visuals.glow.vulnerability =load["Explit - Config"]["Visuals"]["Glow"]["Vulnerability"].asBool();
+
+	settings.visuals.glow.colors.team_invisible[0] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Team Invisible"][0].asInt();
+	settings.visuals.glow.colors.team_invisible[1] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Team Invisible"][1].asInt();
+	settings.visuals.glow.colors.team_invisible[2] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Team Invisible"][2].asInt();
+	settings.visuals.glow.colors.team_invisible[3] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Team Invisible"][3].asInt();
+	settings.visuals.glow.colors.team_visible[0] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Team Visible"][0].asInt();
+	settings.visuals.glow.colors.team_visible[1] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Team Visible"][1].asInt();
+	settings.visuals.glow.colors.team_visible[2] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Team Visible"][2].asInt();
+	settings.visuals.glow.colors.team_visible[3] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Team Visible"][3].asInt();
+	settings.visuals.glow.colors.enemy_invisible[0] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Enemy Invisible"][0].asInt();
+	settings.visuals.glow.colors.enemy_invisible[1] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Enemy Invisible"][1].asInt();
+	settings.visuals.glow.colors.enemy_invisible[2] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Enemy Invisible"][2].asInt();
+	settings.visuals.glow.colors.enemy_invisible[3] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Enemy Invisible"][3].asInt();
+	settings.visuals.glow.colors.enemy_visible[0] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Enemy Visible"][0].asInt();
+	settings.visuals.glow.colors.enemy_visible[1] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Enemy Visible"][1].asInt();
+	settings.visuals.glow.colors.enemy_visible[2] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Enemy Visible"][2].asInt();
+	settings.visuals.glow.colors.enemy_visible[3] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Enemy Visible"][3].asInt();
+	settings.visuals.glow.colors.chickens[0] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Chickens"][0].asInt();
+	settings.visuals.glow.colors.chickens[1] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Chickens"][1].asInt();
+	settings.visuals.glow.colors.chickens[2] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Chickens"][2].asInt();
+	settings.visuals.glow.colors.chickens[3] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Chickens"][3].asInt();
+	settings.visuals.glow.colors.weapons[0] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Dropped Weapons"][0].asInt();
+	settings.visuals.glow.colors.weapons[1] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Dropped Weapons"][1].asInt();
+	settings.visuals.glow.colors.weapons[2] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Dropped Weapons"][2].asInt();
+	settings.visuals.glow.colors.weapons[3] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Dropped Weapons"][3].asInt();
+	settings.visuals.glow.colors.vulnerability[0] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Vulnerability"][0].asInt();
+	settings.visuals.glow.colors.vulnerability[1] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Vulnerability"][1].asInt();
+	settings.visuals.glow.colors.vulnerability[2] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Vulnerability"][2].asInt();
+	settings.visuals.glow.colors.vulnerability[3] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Vulnerability"][3].asInt();
+	settings.visuals.glow.colors.local[0] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Local"][0].asInt();
+	settings.visuals.glow.colors.local[1] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Local"][1].asInt();
+	settings.visuals.glow.colors.local[2] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Local"][2].asInt();
+	settings.visuals.glow.colors.local[3] = load["Explit - Config"]["Visuals"]["Glow"]["Colors"]["Local"][3].asInt();
+
+	settings.visuals.dlights.enable = load["Explit - Config"]["Visuals"]["DLights"]["Enable"].asBool();
+	settings.visuals.dlights.enemy =load["Explit - Config"]["Visuals"]["DLights"]["Enemies"].asBool();
+	settings.visuals.dlights.local=load["Explit - Config"]["Visuals"]["DLights"]["Local"].asBool();
+	settings.visuals.dlights.team=load["Explit - Config"]["Visuals"]["DLights"]["Team"].asBool();
+	settings.visuals.dlights.radius = load["Explit - Config"]["Visuals"]["DLights"]["Radius"].asFloat();
+
+	settings.visuals.dlights.colors.local[0] = load["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Local"][0].asInt();
+	settings.visuals.dlights.colors.local[1] = load["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Local"][1].asInt();
+	settings.visuals.dlights.colors.local[2] = load["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Local"][2].asInt();
+	settings.visuals.dlights.colors.team[0] = load["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Team"][0].asInt();
+	settings.visuals.dlights.colors.team[1] = load["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Team"][1].asInt();
+	settings.visuals.dlights.colors.team[2] = load["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Team"][2].asInt();
+	settings.visuals.dlights.colors.enemy[0] = load["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Enemy"][0].asInt();
+	settings.visuals.dlights.colors.enemy[1] = load["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Enemy"][1].asInt();
+	settings.visuals.dlights.colors.enemy[2] = load["Explit - Config"]["Visuals"]["DLights"]["Colors"]["Enemy"][2].asInt();
+
+	settings.visuals.others.watermark = load["Explit - Config"]["Visuals"]["Others"]["Watermark"].asBool();
+
+	settings.misc.movement.bunnyhop = load["Explit - Config"]["Misc"]["Movement"]["Bunnyhop"].asBool();
+
+	for (int i = 1; i <= 64; i++)
+	{
+		const auto weapon_name = g_utils.weapon_config_name(i);
+
+		if (weapon_name == "unknown")
+			continue;
+
+		settings.legitbot.triggerbot[i].enable = load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Enable"].asBool();
+		settings.legitbot.triggerbot[i].key_1 = load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Key 1"].asInt();
+		settings.legitbot.triggerbot[i].key_2 = load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Key 2"].asInt();
+		settings.legitbot.triggerbot[i].flash = load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Flash Check"].asBool();
+		settings.legitbot.triggerbot[i].smoke = load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Smoke Check"].asBool();
+		settings.legitbot.triggerbot[i].jump = load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Jump Check"].asBool();
+		settings.legitbot.triggerbot[i].scope = load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Scope Check"].asBool();
+		settings.legitbot.triggerbot[i].sleep_before = load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Sleep Before Shot"].asInt();
+		settings.legitbot.triggerbot[i].sleep_between=load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Sleep Between Shots"].asInt();
+		settings.legitbot.triggerbot[i].hit_head=load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Hitbox Head"].asBool();
+		settings.legitbot.triggerbot[i].hit_body=load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Hitbox Body"].asBool();
+		settings.legitbot.triggerbot[i].hit_arms=load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Hitbox Arms"].asBool();
+		settings.legitbot.triggerbot[i].hit_legs=load["Explit - Config"]["Legitbot"]["Triggerbot"][weapon_name]["Hitbox Legs"].asBool();
+	}
 
 	in.close();
 }

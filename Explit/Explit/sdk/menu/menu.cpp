@@ -5,7 +5,7 @@ void c_menu::draw()
 {
 	zgui::poll_input("Counter-Strike: Global Offensive");
 
-	if (zgui::begin_window("Explit for Counter-Strike: Global Offensive", { 500, 350 }, g_draw.menu, zgui::zgui_window_flags_none))
+	if (zgui::begin_window("Explit Framework | Beta", { 500, 350 }, g_draw.menu, zgui::zgui_window_flags_none))
 	{
 		if (zgui::tab_button("Legitbot", { 165,30 }, aimbot))
 		{
@@ -181,12 +181,57 @@ void c_menu::draw_visuals()
 
 void c_menu::draw_aimbot()
 {
+	const auto in_game = g_interfaces.g_local_player && g_interfaces.p_engine->is_in_game() && g_interfaces.p_engine->is_connected();
 	zgui::begin_groupbox("Main");
 	{
-		zgui::checkbox("Triggerbot", g_config.settings.triggerbot.enable);
-		zgui::key_bind("Triggerbot Key 1", g_config.settings.triggerbot.key_1);
-		zgui::key_bind("Triggerbot Key 2", g_config.settings.triggerbot.key_2);
-		zgui::listbox("Hitboxes", std::vector< zgui::multi_select_item >{ { "Head", &g_config.settings.triggerbot.hit_head }, { "Body", &g_config.settings.triggerbot.hit_body }, { "Arms", &g_config.settings.triggerbot.hit_arms }, { "Legs", &g_config.settings.triggerbot.hit_legs }});
+		zgui::checkbox("Aimbot", g_config.settings.legitbot.aimbotb);
+		zgui::combobox("Aimbot Mode", std::vector<std::string>{"On Key", "On Shoot", "Always" }, g_config.settings.legitbot.aim_mode);
+		zgui::checkbox("Triggerbot", g_config.settings.legitbot.triggerbotb);
+		zgui::combobox("Triggerbot Mode", std::vector<std::string>{"On Key", "Always" }, g_config.settings.legitbot.trigger_mode);
+		zgui::checkbox("Deathmatch", g_config.settings.legitbot.deathmatch);
+		if (in_game && g_interfaces.g_local_player->m_ilifestate() == life_alive)
+		{
+			const auto weapon_id = g_interfaces.g_local_player->get_weapon()->get_weapon_id();
+			const auto is_weapon = g_interfaces.g_local_player->get_weapon()->is_useable_weapon();
+			zgui::text(is_weapon ? g_utils.stringer("Current weapon: ", g_utils.weapon_config_name(weapon_id)).c_str() : "No useable gun");
+		}
+		else 
+		{
+			zgui::text("Not in game");
+		}
+	}
+	zgui::end_groupbox();
+	
+	zgui::next_column();
+
+	zgui::begin_groupbox("Aimbot");
+	{
+
+	}
+	zgui::end_groupbox();
+
+	zgui::next_column();
+
+	zgui::begin_groupbox("Triggerbot");
+	{
+		if (in_game && g_interfaces.g_local_player->m_ilifestate() == life_alive)
+		{
+			const auto weapon_id = g_interfaces.g_local_player->get_weapon()->get_weapon_id();
+			if (g_interfaces.g_local_player->get_weapon()->is_useable_weapon())
+			{
+				zgui::checkbox("Enable#10", g_config.settings.legitbot.triggerbot[weapon_id].enable);
+				zgui::key_bind("Key 1#10", g_config.settings.legitbot.triggerbot[weapon_id].key_1);
+				zgui::key_bind("Key 2#10", g_config.settings.legitbot.triggerbot[weapon_id].key_2);
+				zgui::checkbox("Flash Check#10", g_config.settings.legitbot.triggerbot[weapon_id].flash);
+				zgui::checkbox("Smoke Check#10", g_config.settings.legitbot.triggerbot[weapon_id].smoke);
+				zgui::checkbox("Jump Check#10", g_config.settings.legitbot.triggerbot[weapon_id].jump);
+				if(g_interfaces.g_local_player->get_weapon()->is_sniper())
+					zgui::checkbox("Scope Check#10", g_config.settings.legitbot.triggerbot[weapon_id].scope);
+				zgui::slider_int("Sleep Before#10", 0, 500, g_config.settings.legitbot.triggerbot[weapon_id].sleep_before);
+				zgui::slider_int("Sleep Between#10", 0, 500, g_config.settings.legitbot.triggerbot[weapon_id].sleep_between);
+				zgui::listbox("Hitboxes#10", std::vector< zgui::multi_select_item >{ { "Head", &g_config.settings.legitbot.triggerbot[weapon_id].hit_head }, { "Body", &g_config.settings.legitbot.triggerbot[weapon_id].hit_body }, { "Arms", &g_config.settings.legitbot.triggerbot[weapon_id].hit_arms }, { "Legs", &g_config.settings.legitbot.triggerbot[weapon_id].hit_legs }});
+			}
+		}
 	}
 	zgui::end_groupbox();
 }

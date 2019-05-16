@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="features\legitbot\triggerbot.cpp" />
     <ClCompile Include="features\misc\bunnyhop.cpp" />
     <ClCompile Include="features\visuals\chams.cpp" />
     <ClCompile Include="features\visuals\dlight.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="zgui\zgui.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="features\legitbot\triggerbot.hpp" />
     <ClInclude Include="features\misc\bunnyhop.hpp" />
     <ClInclude Include="features\visuals\chams.hpp" />
     <ClInclude Include="features\visuals\dlight.hpp" />

@@ -27,7 +27,6 @@
 #include "misc/singleton.hpp"
 #include "misc/valve/i_app_system.hpp"
 #include "math/vector2d.hpp"
-#include "utils/utils.hpp"
 #include "misc/valve/life_state.hpp"
 #include "misc/color.hpp"
 #include "math/QAngle.hpp"
@@ -36,6 +35,7 @@
 #include "math/VMatrix.hpp"
 #include "math/vector4d.hpp"
 #include "math/math.hpp"
+#include "utils/utils.hpp"
 #include "misc/valve/class_id.hpp"
 #include "misc/valve/client_class.hpp"
 #include "misc/valve/i_client_networkable.hpp"
@@ -48,6 +48,7 @@
 #include "misc/valve/i_client_thinkable.hpp"
 #include "misc/valve/i_client_unknown.hpp"
 #include "misc/valve/i_collideable.hpp"
+#include "misc/valve/item_definition_index.hpp"
 #include "misc/valve/i_handle_entity.hpp"
 #include "misc/valve/move_type.hpp"
 #include "misc/valve/c_user_cmd.hpp"
@@ -80,6 +81,7 @@
 #include "../features/visuals/dlight.hpp"
 #include "../features/visuals//chams.hpp"
 #include "../features/misc/bunnyhop.hpp"
+#include "../features/legitbot/triggerbot.hpp"
 
 #include "hooks/hooks.hpp"
 

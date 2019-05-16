@@ -34,7 +34,7 @@ public:
 	virtual ~c_user_cmd() {};
 	int       command_number;    
 	int       tick_count;        
-	QAngle    view_angles;         
+	Vector    view_angles;
 	Vector    aim_direction;       
 	float     forward_move;       
 	float     side_move;           

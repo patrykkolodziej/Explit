@@ -38,7 +38,6 @@ public:
 				bool team = false;
 				bool weapons = false;
 				bool local = false;
-				bool nades = false;
 				bool chickens = false;
 				struct {
 					int team_invisible[4] = { 0,0,255 ,255 };
@@ -123,16 +122,31 @@ public:
 				bool bunnyhop = false;
 			}movement;
 		}misc;
-		struct 
-		{
-			bool enable = false;
-			int key_1 = 4;
-			int key_2 = 18;
-			bool hit_head = false;
-			bool hit_body = false;
-			bool hit_arms = false;
-			bool hit_legs = false;
-		}triggerbot;
+		struct {
+			bool aimbotb = false;
+			bool triggerbotb = false;
+			bool deathmatch = false;
+			int aim_mode = 0;
+			int trigger_mode = 0;
+			struct {
+				bool enable = false;
+			}aimbot[65];
+			struct {
+				bool enable = false;
+				int key_1 = 4;
+				int key_2 = 18;
+				bool flash = false;
+				bool smoke = false;
+				bool jump = false;
+				bool scope = false;
+				int sleep_before = 15;
+				int sleep_between = 1;
+				bool hit_head = false;
+				bool hit_body = false;
+				bool hit_arms = false;
+				bool hit_legs = false;
+			}triggerbot[65];
+		}legitbot;
 	} settings;
 private:
 	std::string directory_path;

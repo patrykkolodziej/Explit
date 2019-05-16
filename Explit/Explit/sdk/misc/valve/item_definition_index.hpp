@@ -1,5 +1,5 @@
 #pragma once
-enum class item_definition_index : int
+enum item_definition_index
 {
 	weapon_none = 0,
 	weapon_deagle,

@@ -52,5 +52,10 @@ class c_base_weapon
 public:
 	weapon_data_t* get_weapon_info();
 	int m_iclip1();
+	float m_flnextprimaryattack();
+	bool is_useable_weapon();
+	bool is_sniper();
+	short get_weapon_id();
+	bool can_shoot();
 };
 

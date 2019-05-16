@@ -113,6 +113,7 @@ bool __fastcall c_hooks::create_move(i_client_mode* thisptr, void* edx, float sa
 		return ohook(thisptr, edx, sample_frametime, p_cmd);
 
 	g_bunny_hop.start(p_cmd);
+	g_triggerbot.start(p_cmd);
 
 	return false;
 }

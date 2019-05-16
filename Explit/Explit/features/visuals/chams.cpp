@@ -18,6 +18,8 @@ void c_chams::scene_end_start()
 				continue;
 			if (p_entity == g_interfaces.g_local_player && !g_config.settings.visuals.chams.local)
 				continue;
+			if (g_config.settings.visuals.chams.visible && !g_interfaces.g_local_player->is_visible(p_entity))
+				continue;
 
 			if (g_config.settings.visuals.chams.enemy && p_entity->m_iteamnum() != g_interfaces.g_local_player->m_iteamnum() && p_entity->is_valid())
 			{

@@ -8,6 +8,8 @@
 class c_utils {
 public:
 	uintptr_t find_signature(const char* module, const char* signature);
+	std::string weapon_config_name(const int i);
+	bool is_line_goes_through_smoke(Vector source, Vector destination);
 	template< typename ... Args >
 	std::string stringer(Args const& ... args)
 	{
@@ -19,7 +21,8 @@ public:
 
 		return stream.str();
 	}
-
+private:
+	using line_goes_through_smoke_fn = bool(__cdecl*)(Vector, Vector, int16_t);
 };
 extern c_utils g_utils;
 

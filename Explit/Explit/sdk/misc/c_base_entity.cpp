@@ -64,6 +64,11 @@ int c_base_entity::m_armorvalue()
 	static auto offset = c.netvar->get_offset("DT_CSPlayer", "m_ArmorValue");
 	return *reinterpret_cast<int*>((uintptr_t)this + offset);
 }
+int c_base_entity::m_ntickbase()
+{
+	static auto offset = c.netvar->get_offset("DT_BasePlayer", "m_nTickBase");
+	return *reinterpret_cast<int*>((uintptr_t)this + offset);
+}
 int32_t c_base_entity::m_ilifestate()
 {
 	static auto offset = c.netvar->get_offset("DT_BasePlayer", "m_lifeState");
@@ -144,15 +149,33 @@ bool c_base_entity::is_visible(c_base_entity* p_player)
 	ray_t ray;
 	c_trace_filter filter;
 	filter.pskip = this;
-	const auto start_pos = m_vecorigin() + m_vecviewoffset();
 
 	for (int i = 0; i < hitbox_max; i++)
 	{
 		const auto trace_pos = p_player->get_hitbox_position(i);
-
-		ray.init(start_pos, trace_pos);
+		const auto smoke = g_utils.is_line_goes_through_smoke(get_eye_position(), trace_pos);
+		ray.init(get_eye_position(), trace_pos);
 		g_interfaces.p_engine_trace->trace_ray(ray, mask_shot | contents_grate, &filter, &game_trace);
 
-		return game_trace.hit_entity == p_player || game_trace.fraction > 0.97f;
+		return (game_trace.hit_entity == p_player && !smoke) || (game_trace.fraction > 0.97f && !smoke);
 	}
+}
+Vector c_base_entity::get_eye_position()
+{
+	return m_vecorigin() + m_vecviewoffset();
+}
+int c_base_entity::m_ishotsfired()
+{
+	static auto offset = c.netvar->get_offset("DT_CSPlayer", "m_iShotsFired");
+	return *reinterpret_cast<int*>((uintptr_t)this + offset);
+}
+float c_base_entity::m_flflashduration()
+{
+	static auto offset = c.netvar->get_offset("DT_CSPlayer", "m_flFlashDuration");
+	return *reinterpret_cast<float*>((uintptr_t)this + offset);
+}
+bool c_base_entity::m_bisscoped()
+{
+	static auto offset = c.netvar->get_offset("DT_CSPlayer", "m_bIsScoped");
+	return *reinterpret_cast<bool*>((uintptr_t)this + offset);
 }

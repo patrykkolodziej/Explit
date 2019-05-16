@@ -58,6 +58,9 @@
     <Filter Include="features\misc">
       <UniqueIdentifier>{2109ac57-85cb-45f4-9965-d82e5e6cadfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="features\legitbot">
+      <UniqueIdentifier>{97a0f100-54fe-4512-8070-72ef642ce80b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="zgui\zgui.cpp">
@@ -126,6 +129,9 @@
     </ClCompile>
     <ClCompile Include="features\misc\bunnyhop.cpp">
       <Filter>features\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="features\legitbot\triggerbot.cpp">
+      <Filter>features\legitbot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +326,9 @@
     </ClInclude>
     <ClInclude Include="sdk\misc\valve\entity_flags.hpp">
       <Filter>sdk\misc\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="features\legitbot\triggerbot.hpp">
+      <Filter>features\legitbot</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
