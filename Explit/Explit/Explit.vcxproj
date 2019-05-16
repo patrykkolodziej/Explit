@@ -149,8 +149,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="features\helpers\movement_fix.cpp" />
     <ClCompile Include="features\legitbot\triggerbot.cpp" />
-    <ClCompile Include="features\misc\bunnyhop.cpp" />
+    <ClCompile Include="features\misc\auto_strafe.cpp" />
+    <ClCompile Include="features\misc\bunny_hop.cpp" />
+    <ClCompile Include="features\misc\engine_radar.cpp" />
     <ClCompile Include="features\visuals\chams.cpp" />
     <ClCompile Include="features\visuals\dlight.cpp" />
     <ClCompile Include="features\visuals\esp.cpp" />
@@ -174,8 +177,11 @@
     <ClCompile Include="zgui\zgui.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="features\helpers\movement_fix.hpp" />
     <ClInclude Include="features\legitbot\triggerbot.hpp" />
-    <ClInclude Include="features\misc\bunnyhop.hpp" />
+    <ClInclude Include="features\misc\auto_strafe.hpp" />
+    <ClInclude Include="features\misc\bunny_hop.hpp" />
+    <ClInclude Include="features\misc\engine_radar.hpp" />
     <ClInclude Include="features\visuals\chams.hpp" />
     <ClInclude Include="features\visuals\dlight.hpp" />
     <ClInclude Include="features\visuals\esp.hpp" />

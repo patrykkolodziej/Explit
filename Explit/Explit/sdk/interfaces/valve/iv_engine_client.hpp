@@ -83,8 +83,8 @@ public:
 	virtual c_sentence*            getsentence(c_audio_source *paudiosource) = 0; // 15
 	virtual float                 getsentencelength(c_audio_source *paudiosource) = 0;
 	virtual bool                  isstreaming(c_audio_source *paudiosource) const = 0;
-	virtual void                  get_view_angles(QAngle& va) = 0;
-	virtual void                  set_view_angles(QAngle& va) = 0;
+	virtual void                  get_view_angles(Vector& va) = 0;
+	virtual void                  set_view_angles(Vector& va) = 0;
 	virtual int                   get_max_clients(void) = 0; // 20
 	virtual const char*           key_lookupbinding(const char *pbinding) = 0;
 	virtual const char*           key_bindingforkey(int &code) = 0;

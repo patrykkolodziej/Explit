@@ -10,7 +10,8 @@ void c_chams::scene_end_start()
 		chams_material->setmaterialvarflag(material_var_ignorez, !g_config.settings.visuals.chams.visible);
 		chams_material->alphamodulate(1.f);
 		
-		for (int i = 1; i <= g_interfaces.p_engine->get_max_clients(); i++) {
+		for (int i = 1; i <= g_interfaces.p_engine->get_max_clients(); i++)
+		{
 			const auto p_entity = reinterpret_cast<c_base_entity*>(g_interfaces.p_entity_list->get_client_entity((i)));
 			if (!p_entity)
 				continue;

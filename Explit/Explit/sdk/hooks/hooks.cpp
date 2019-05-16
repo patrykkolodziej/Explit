@@ -112,6 +112,8 @@ bool __fastcall c_hooks::create_move(i_client_mode* thisptr, void* edx, float sa
 	if (!p_cmd->command_number || !g_interfaces.p_engine->is_in_game() || !g_interfaces.g_local_player || !g_interfaces.g_local_player->is_valid())
 		return ohook(thisptr, edx, sample_frametime, p_cmd);
 
+	bool& send_packet = *reinterpret_cast<bool*>(*(static_cast<uintptr_t*>(_AddressOfReturnAddress()) - 1) - 0x1C);
+
 	g_bunny_hop.start(p_cmd);
 	g_triggerbot.start(p_cmd);
 

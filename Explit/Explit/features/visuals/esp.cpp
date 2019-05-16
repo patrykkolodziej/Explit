@@ -5,7 +5,8 @@ void c_esp::start()
 {
 	if (g_config.settings.visuals.esp.esp)
 	{
-		for (int i = 1; i <= g_interfaces.p_entity_list->get_highest_entity_index(); i++) {
+		for (int i = 1; i <= g_interfaces.p_entity_list->get_highest_entity_index(); i++) 
+		{
 			const auto p_entity = reinterpret_cast<c_base_entity*>(g_interfaces.p_entity_list->get_client_entity((i)));
 			if (!p_entity)
 				continue;

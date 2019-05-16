@@ -179,3 +179,8 @@ bool c_base_entity::m_bisscoped()
 	static auto offset = c.netvar->get_offset("DT_CSPlayer", "m_bIsScoped");
 	return *reinterpret_cast<bool*>((uintptr_t)this + offset);
 }
+Vector c_base_entity::m_vecvelocity()
+{
+	static auto offset = c.netvar->get_offset("DT_CSPlayer", "m_vecVelocity[0]");
+	return *reinterpret_cast<Vector*>((uintptr_t)this + offset);
+}

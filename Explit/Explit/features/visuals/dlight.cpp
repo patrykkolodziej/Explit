@@ -5,7 +5,8 @@ void c_dlight::start()
 {
 	if (g_config.settings.visuals.dlights.enable)
 	{
-		for (int i = 1; i <= g_interfaces.p_engine->get_max_clients(); i++) {
+		for (int i = 1; i <= g_interfaces.p_engine->get_max_clients(); i++)
+		{
 			const auto entity = reinterpret_cast<c_base_entity*>(g_interfaces.p_entity_list->get_client_entity((i)));
 			if (!entity)
 				continue;

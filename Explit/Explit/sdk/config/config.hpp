@@ -120,6 +120,9 @@ public:
 			struct 
 			{
 				bool bunnyhop = false;
+				int bunnyhop_mode = 0;
+				bool auto_strafe = false;
+				int autostrafe_mode = 0;
 			}movement;
 		}misc;
 		struct {

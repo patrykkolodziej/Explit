@@ -13,6 +13,7 @@
 #include <filesystem>
 #include <Psapi.h>
 #include <fstream> 
+#include <intrin.h>
 #include <thread>
 #include <Shlwapi.h>
 #pragma comment(lib, "shlwapi.lib")
@@ -80,7 +81,10 @@
 #include "../features/visuals/glow.hpp"
 #include "../features/visuals/dlight.hpp"
 #include "../features/visuals//chams.hpp"
-#include "../features/misc/bunnyhop.hpp"
+#include "../features/misc/bunny_hop.hpp"
+#include "../features/helpers/movement_fix.hpp"
+#include "../features/misc/auto_strafe.hpp"
+#include "../features/misc/engine_radar.hpp"
 #include "../features/legitbot/triggerbot.hpp"
 
 #include "hooks/hooks.hpp"

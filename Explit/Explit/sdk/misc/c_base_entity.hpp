@@ -32,6 +32,7 @@ public:
 	float m_flflashduration();
 	bool m_bisscoped();
 	bool is_c4();
+	Vector m_vecvelocity();
 	Vector m_vecorigin();
 	Vector get_eye_position();
 	Vector get_bone_position(const int bone);

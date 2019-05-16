@@ -61,6 +61,9 @@
     <Filter Include="features\legitbot">
       <UniqueIdentifier>{97a0f100-54fe-4512-8070-72ef642ce80b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="features\helpers">
+      <UniqueIdentifier>{42922de7-1247-4168-a94a-303b2da96104}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="zgui\zgui.cpp">
@@ -127,11 +130,20 @@
     <ClCompile Include="features\visuals\chams.cpp">
       <Filter>features\visuals</Filter>
     </ClCompile>
-    <ClCompile Include="features\misc\bunnyhop.cpp">
-      <Filter>features\misc</Filter>
-    </ClCompile>
     <ClCompile Include="features\legitbot\triggerbot.cpp">
       <Filter>features\legitbot</Filter>
+    </ClCompile>
+    <ClCompile Include="features\misc\engine_radar.cpp">
+      <Filter>features\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="features\helpers\movement_fix.cpp">
+      <Filter>features\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="features\misc\bunny_hop.cpp">
+      <Filter>features\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="features\misc\auto_strafe.cpp">
+      <Filter>features\misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -321,14 +333,23 @@
     <ClInclude Include="sdk\misc\valve\c_user_cmd.hpp">
       <Filter>sdk\misc\valve</Filter>
     </ClInclude>
-    <ClInclude Include="features\misc\bunnyhop.hpp">
-      <Filter>features\misc</Filter>
-    </ClInclude>
     <ClInclude Include="sdk\misc\valve\entity_flags.hpp">
       <Filter>sdk\misc\valve</Filter>
     </ClInclude>
     <ClInclude Include="features\legitbot\triggerbot.hpp">
       <Filter>features\legitbot</Filter>
+    </ClInclude>
+    <ClInclude Include="features\misc\engine_radar.hpp">
+      <Filter>features\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="features\helpers\movement_fix.hpp">
+      <Filter>features\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="features\misc\bunny_hop.hpp">
+      <Filter>features\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="features\misc\auto_strafe.hpp">
+      <Filter>features\misc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
