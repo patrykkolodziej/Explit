@@ -76,6 +76,9 @@ void c_menu::draw_misc()
 	zgui::begin_groupbox("Misc");
 	{
 		zgui::checkbox("BunnyHop", g_config.settings.misc.movement.bunnyhop);
+		zgui::combobox("BunnyHop Mode", std::vector<std::string>{"Rage", "Legit"}, g_config.settings.misc.movement.bunnyhop_mode);
+		zgui::checkbox("Autostrafe", g_config.settings.misc.movement.auto_strafe);
+		zgui::combobox("Autostrafe Mode", std::vector<std::string>{"Legit","Rage"}, g_config.settings.misc.movement.autostrafe_mode);
 		if (zgui::button("Unhook"))
 			g_sdk.unhook = true;
 	}
@@ -206,7 +209,29 @@ void c_menu::draw_aimbot()
 
 	zgui::begin_groupbox("Aimbot");
 	{
-
+		if (in_game && g_interfaces.g_local_player->m_ilifestate() == life_alive)
+		{
+			const auto weapon_id = g_interfaces.g_local_player->get_weapon()->get_weapon_id();
+			if (g_interfaces.g_local_player->get_weapon()->is_useable_weapon())
+			{
+				zgui::checkbox("Enable#11", g_config.settings.legitbot.aimbot[weapon_id].enable);
+				zgui::key_bind("Key 1#11", g_config.settings.legitbot.aimbot[weapon_id].key_1);
+				zgui::key_bind("Key 2#11", g_config.settings.legitbot.aimbot[weapon_id].key_2);
+				zgui::checkbox("Flash Check#11", g_config.settings.legitbot.aimbot[weapon_id].flash);
+				zgui::checkbox("Smoke Check#11", g_config.settings.legitbot.aimbot[weapon_id].smoke);
+				zgui::checkbox("Visible Check#11", g_config.settings.legitbot.aimbot[weapon_id].smoke);
+				zgui::checkbox("Jump Check#11", g_config.settings.legitbot.aimbot[weapon_id].jump);
+				if (g_interfaces.g_local_player->get_weapon()->is_sniper())
+					zgui::checkbox("Scope Check#11", g_config.settings.legitbot.aimbot[weapon_id].scope);
+				zgui::slider_float("Fov#11", 0, 180, g_config.settings.legitbot.aimbot[weapon_id].fov);
+				zgui::combobox("Fov type", std::vector<std::string>{"Static", "Dynamic" }, g_config.settings.legitbot.aimbot[weapon_id].fov_type);
+				zgui::slider_float("Smooth#11", 0, 100, g_config.settings.legitbot.aimbot[weapon_id].smooth);
+				zgui::checkbox("Curve#11", g_config.settings.legitbot.aimbot[weapon_id].curve);
+				zgui::slider_float("Curve X#11", 0, 7, g_config.settings.legitbot.aimbot[weapon_id].curve_x);
+				zgui::slider_float("Curve Y#11", 0, 7, g_config.settings.legitbot.aimbot[weapon_id].curve_y);
+				//zgui::listbox("Hitboxes#10", std::vector< zgui::multi_select_item >{ { "Head", &g_config.settings.legitbot.triggerbot[weapon_id].hit_head }, { "Body", &g_config.settings.legitbot.triggerbot[weapon_id].hit_body }, { "Arms", &g_config.settings.legitbot.triggerbot[weapon_id].hit_arms }, { "Legs", &g_config.settings.legitbot.triggerbot[weapon_id].hit_legs }});
+			}
+		}
 	}
 	zgui::end_groupbox();
 

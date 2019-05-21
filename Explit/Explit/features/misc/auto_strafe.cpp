@@ -29,42 +29,7 @@ void c_auto_strafe::start(c_user_cmd* p_cmd)
 					p_cmd->forward_move = 250.0f;
 
 				float yaw_change = 0.0f;
-				if (g_interfaces.g_local_player->m_vecvelocity().Length() > 50.f)
-					yaw_change = 30.0f * fabsf(30.0f / g_interfaces.g_local_player->m_vecvelocity().Length());
 
-
-				Vector view_angles;
-				g_interfaces.p_engine->get_view_angles(view_angles);
-
-				if (!(g_interfaces.g_local_player->m_fflags() & fl_on_ground) && !in_move)
-				{
-					if (left_right || p_cmd->mouse_dx > 1)
-					{
-						view_angles.y += yaw_change;
-						p_cmd->side_move = 250.0f;
-					}
-					else if (!left_right || p_cmd->mouse_dx < 1)
-					{
-						view_angles.y -= yaw_change;
-						p_cmd->side_move = -250.0f;
-					}
-
-					left_right = !left_right;
-				}
-
-				g_movement_fix.start(view_angles, p_cmd, p_cmd->forward_move, p_cmd->side_move);
-
-				p_cmd->view_angles = view_angles;
-			}
-			case 2:
-			{
-				static bool left_right;
-				bool in_move = p_cmd->buttons & in_forward || p_cmd->buttons & in_back || p_cmd->buttons & in_moveleft || p_cmd->buttons & in_moveright;
-
-				if (p_cmd->buttons & in_forward && g_interfaces.g_local_player->m_vecvelocity().Length() <= 50.0f)
-					p_cmd->forward_move = 250.0f;
-
-				float yaw_change = 0.0f;
 				if (g_interfaces.g_local_player->m_vecvelocity().Length() > 50.f)
 					yaw_change = 30.0f * fabsf(30.0f / g_interfaces.g_local_player->m_vecvelocity().Length());
 

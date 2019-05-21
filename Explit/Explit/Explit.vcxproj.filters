@@ -145,6 +145,9 @@
     <ClCompile Include="features\misc\auto_strafe.cpp">
       <Filter>features\misc</Filter>
     </ClCompile>
+    <ClCompile Include="features\legitbot\aimbot.cpp">
+      <Filter>features\legitbot</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="zgui\zgui.hpp">
@@ -350,6 +353,9 @@
     </ClInclude>
     <ClInclude Include="features\misc\auto_strafe.hpp">
       <Filter>features\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="features\legitbot\aimbot.hpp">
+      <Filter>features\legitbot</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

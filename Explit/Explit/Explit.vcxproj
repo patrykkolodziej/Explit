@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="features\helpers\movement_fix.cpp" />
+    <ClCompile Include="features\legitbot\aimbot.cpp" />
     <ClCompile Include="features\legitbot\triggerbot.cpp" />
     <ClCompile Include="features\misc\auto_strafe.cpp" />
     <ClCompile Include="features\misc\bunny_hop.cpp" />
@@ -178,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="features\helpers\movement_fix.hpp" />
+    <ClInclude Include="features\legitbot\aimbot.hpp" />
     <ClInclude Include="features\legitbot\triggerbot.hpp" />
     <ClInclude Include="features\misc\auto_strafe.hpp" />
     <ClInclude Include="features\misc\bunny_hop.hpp" />

@@ -133,6 +133,20 @@ public:
 			int trigger_mode = 0;
 			struct {
 				bool enable = false;
+				float fov = 3.f;
+				float smooth = 15.f;
+				bool curve = false;
+				float curve_x = 3.9f;
+				float curve_y = 1.6f;
+				bool error = false;
+				float error_amount = 0.3f;
+				int fov_type = 0;
+				int key_1 = 4;
+				int key_2 = 18;
+				bool flash = false;
+				bool smoke = false;
+				bool jump = false;
+				bool scope = false;
 			}aimbot[65];
 			struct {
 				bool enable = false;

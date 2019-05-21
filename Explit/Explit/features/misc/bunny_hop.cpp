@@ -26,7 +26,7 @@ void c_bunny_hop::start(c_user_cmd* p_cmd)
 				p_cmd->buttons &= ~in_jump;
 				hops_restricted = 0;
 			}
-			else if ((rand() % 100 > 70	&& hops_restricted < 8)|| (6 > 0&& hops_hit > 6))
+			else if ((rand() % 100 > 80	&& hops_restricted < 6)|| (6 > 0&& hops_hit > 6))
 			{
 				p_cmd->buttons &= ~in_jump;
 				hops_restricted++;

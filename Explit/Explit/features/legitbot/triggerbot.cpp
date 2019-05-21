@@ -8,7 +8,7 @@ void c_triggerbot::start(c_user_cmd* p_cmd)
 		if(g_interfaces.g_local_player->m_ilifestate() == life_alive)
 		{ 
 			const auto weapon = g_interfaces.g_local_player->get_weapon();
-
+			
 			if (weapon->is_useable_weapon())
 			{
 				const auto weapon_id = weapon->get_weapon_id();

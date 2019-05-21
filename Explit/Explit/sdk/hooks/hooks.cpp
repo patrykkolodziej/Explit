@@ -116,6 +116,7 @@ bool __fastcall c_hooks::create_move(i_client_mode* thisptr, void* edx, float sa
 
 	g_bunny_hop.start(p_cmd);
 	g_triggerbot.start(p_cmd);
+	g_auto_strafe.start(p_cmd);
 
 	return false;
 }
