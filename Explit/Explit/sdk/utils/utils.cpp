@@ -40,12 +40,14 @@ uintptr_t c_utils::find_signature(const char* module, const char* signature)
 
 	return 0u;
 }
+
 bool c_utils::is_line_goes_through_smoke(Vector source, Vector destination)
 {
 	static auto offset = find_signature("client_panorama.dll", "55 8B EC 83 EC 08 8B 15 ? ? ? ? 0F 57 C0");
 
 	return reinterpret_cast<line_goes_through_smoke_fn>(offset)(source, destination, true);
 }
+
 std::string c_utils::weapon_config_name(const int i)
 {
 	switch (i)

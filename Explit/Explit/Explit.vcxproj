@@ -217,7 +217,6 @@
     <ClInclude Include="sdk\misc\c_base_entity.hpp" />
     <ClInclude Include="sdk\misc\c_base_weapon.hpp" />
     <ClInclude Include="sdk\misc\color.hpp" />
-    <ClInclude Include="sdk\misc\singleton.hpp" />
     <ClInclude Include="sdk\misc\valve\class_id.hpp" />
     <ClInclude Include="sdk\misc\valve\client_class.hpp" />
     <ClInclude Include="sdk\misc\valve\c_base_handle.hpp" />

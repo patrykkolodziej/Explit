@@ -20,18 +20,37 @@ Explit is an internal multihack for Counter-Strike: Global Offensive. Currently 
     * Weapon
     * Ammo
     * Snaplines
+	* Visible Only
+	* Vulnerability
     * Filter
+	* Customizable Colors
 * **Glow**
     * Enable
     * Style
     * Filter
+	* Visible Only
+	* Vulnerability
+	* Customizable Colors
 * **Chams**
     * Enable
     * Filter
+	* Visible Only
+	* Customizable Colors
 * **DLights**
     * Enable
     * Radius
     * Filter
+	* Customizable Colors
+* **Triggerbot**
+	* Settings per weapon
+	* Customizable 2 keys
+	* Checks:
+		- Scope
+		- Flash
+		- Jump
+		- Smoke
+	* Selectable hitboxes
+	* Customizable Sleeps
 * **JSON Config**
 * **Zgui menu**
     

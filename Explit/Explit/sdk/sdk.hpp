@@ -14,6 +14,7 @@
 #include <Psapi.h>
 #include <fstream> 
 #include <intrin.h>
+#include <random>
 #include <thread>
 #include <Shlwapi.h>
 #pragma comment(lib, "shlwapi.lib")
@@ -25,7 +26,6 @@
 #include "math/spoint.hpp"
 #include "math/srect.hpp"
 #include "../zgui/zgui.hpp"
-#include "misc/singleton.hpp"
 #include "misc/valve/i_app_system.hpp"
 #include "math/vector2d.hpp"
 #include "misc/valve/life_state.hpp"

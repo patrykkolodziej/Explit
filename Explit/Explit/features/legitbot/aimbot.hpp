@@ -8,8 +8,9 @@ public:
 private:
 	c_base_entity* best_target;
 	int best_hitbox;
+	int weapon_id;
 	Vector curve_angle(const Vector calced_angle);
-	Vector smooth_angle(const Vector smooth_angle);
-	Vector error_ange(const Vector calc_angle);
+	Vector smooth_angle(const Vector calced_angle);
+	Vector error_angle(const Vector calced_angle);
 };
 extern c_aimbot g_aimbot;

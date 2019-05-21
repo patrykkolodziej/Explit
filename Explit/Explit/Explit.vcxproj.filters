@@ -201,9 +201,6 @@
     <ClInclude Include="sdk\math\math.hpp">
       <Filter>sdk\math</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\misc\singleton.hpp">
-      <Filter>sdk\misc</Filter>
-    </ClInclude>
     <ClInclude Include="sdk\netvarmanager\fnv.hpp">
       <Filter>sdk\netvarmanager</Filter>
     </ClInclude>

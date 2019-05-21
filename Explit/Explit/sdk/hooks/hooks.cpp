@@ -10,7 +10,6 @@ void get_text_size(unsigned long font, const char* text, int& wide, int& tall) n
 float get_frametime() noexcept { return g_interfaces.p_global_vars->frame_time; }
 #pragma endregion
 
-
 void c_hooks::get_hooks() 
 {
 	panel_hook = std::make_unique<vmt>(g_interfaces.p_panel);

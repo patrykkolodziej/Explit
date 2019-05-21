@@ -178,6 +178,22 @@ public:
 		return res;
 	}
 
+	void Clamp() const
+	{
+		Vector res = *this;
+		res.x = std::clamp(res.x, -89.0f, 89.0f);
+		res.y = std::clamp(std::remainder(res.y, 360.0f), -180.0f, 180.0f);
+		res.z = std::clamp(res.z, -50.0f, 50.0f);
+	}
+
+	void Normalise() const
+	{
+		Vector res = *this;
+		res.x = std::isfinite(x) ? std::remainderf(res.x, 360.0f) : 0.0f;
+		res.y = std::isfinite(y) ? std::remainderf(res.y, 360.0f) : 0.0f;
+		res.z = 0.0f;
+	}
+
 	float Normalize() const
 	{
 		Vector res = *this;

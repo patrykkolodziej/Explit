@@ -61,6 +61,5 @@ t* c_interfaces::get_interface(const std::string module, const std::string name,
 			}
 		}
 	}
-
 }
 

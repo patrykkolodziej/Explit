@@ -36,25 +36,47 @@ bool c_math::world_to_screen(const Vector& in, Vector& out)
 	}
 	return false;
 }
+
 void c_math::vector_transform(const Vector& in1, const matrix3x4_t& in2, Vector& out)
 {
 	out[0] = in1.Dot(in2[0]) + in2[0][3];
 	out[1] = in1.Dot(in2[1]) + in2[1][3];
 	out[2] = in1.Dot(in2[2]) + in2[2][3];
 }
+
 void c_math::sin_cos(const float radians, float& sine, float& cosine)
 {
 	sine = sin(radians);
 	cosine = cos(radians);
 }
+
 double c_math::deg_to_rad(const double deg)
 {
 	return deg * static_cast<float>(PI) / 180;
 }
+
 Vector c_math::angle_vectors(const Vector& in)
 {
 	const auto x = cos(deg_to_rad(in.x)) * cos(deg_to_rad(in.y));
 	const auto y = cos(deg_to_rad(in.x)) * sin(deg_to_rad(in.y));
 	const auto z = -sin(deg_to_rad(in.x));
 	return Vector(x, y, z);
+}
+
+float c_math::random(const float min, const float max)
+{
+	std::random_device random_device;
+	std::default_random_engine random_engine(random_device());
+	std::uniform_real_distribution<float> uniform_distribution(min, max);
+
+	return uniform_distribution(random_engine);
+}
+
+int c_math::random(const int min, const int max)
+{
+	std::random_device random_device;
+	std::default_random_engine random_engine(random_device());
+	std::uniform_int_distribution<int> uniform_distribution(min, max);
+
+	return uniform_distribution(random_engine);
 }

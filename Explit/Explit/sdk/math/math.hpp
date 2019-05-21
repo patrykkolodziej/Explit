@@ -10,5 +10,8 @@ public:
 	Vector angle_vectors(const Vector& in);
 	void sin_cos(const float radians, float& sine, float& cosine);
 	double deg_to_rad(const double deg);
+	float random(const float min, const float max);
+	int random(const int min, const int max);
+
 };
 extern c_math g_math;
